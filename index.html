@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tacos Los Güeros</title>
+  <meta name="description" content="Tacos Los Güeros - Taquería y parrillada en Ciudad de México. Menú, pedidos por WhatsApp y servicio a domicilio." />
+
+  <style>
+    :root{
+      --rojo:#d71920;
+      --rojo-oscuro:#8f1015;
+      --amarillo:#f4c95d;
+      --amarillo-claro:#fff4cf;
+      --naranja:#f08c1a;
+      --naranja-fuerte:#e56f0b;
+      --negro:#1f1f1f;
+      --gris:#5b5b5b;
+      --blanco:#ffffff;
+      --verde:#25D366;
+      --sombra:0 10px 25px rgba(0,0,0,.12);
+      --radio:18px;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #f7d06c 0%, #f2bd4a 100%);
+      color: var(--negro);
+      line-height:1.5;
+    }
+
+    .topbar{
+      background: linear-gradient(90deg, var(--rojo), #ff2f3a, var(--rojo));
+      color: var(--blanco);
+      text-align:center;
+      padding: 16px 14px 20px;
+      box-shadow: var(--sombra);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 4px solid #ffcc4d;
+    }
+
+    .brand{
+      display:inline-block;
+      padding: 6px 18px 2px;
+      border-radius: 20px;
+    }
+
+    .brand h1{
+      font-size: 3rem;
+      letter-spacing: 2px;
+      line-height: 1;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #fff8d6;
+      text-shadow:
+        0 2px 0 #8f1015,
+        0 4px 0 #8f1015,
+        0 6px 12px rgba(0,0,0,.28),
+        0 0 12px rgba(255,230,120,.35);
+      margin-bottom: 8px;
+    }
+
+    .brand .taco{
+      display:inline-block;
+      transform: translateY(-2px);
+      margin: 0 8px;
+      font-size: 2rem;
+    }
+
+    .topbar p{
+      font-size: 1rem;
+      opacity: .98;
+      font-weight: bold;
+    }
+
+    .nav{
+      margin-top: 14px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .nav a{
+      color: var(--blanco);
+      text-decoration:none;
+      padding:10px 16px;
+      border:1px solid rgba(255,255,255,.35);
+      border-radius:999px;
+      font-size:.95rem;
+      font-weight:bold;
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero{
+      max-width: 1150px;
+      margin: 22px auto 0;
+      padding: 0 16px;
+    }
+
+    .hero-box{
+      background: linear-gradient(135deg, rgba(198,40,40,.95), rgba(239,143,26,.95));
+      color: var(--blanco);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--sombra);
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 20px;
+      align-items:center;
+      border: 3px solid rgba(255,255,255,.18);
+    }
+
+    .hero-text h2{
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+      line-height: 1.1;
+    }
+
+    .hero-text p{
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      max-width: 620px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      border:none;
+      cursor:pointer;
+      padding:14px 20px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: .2s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-1px);
+    }
+
+    .btn-light{
+      background: var(--blanco);
+      color: var(--rojo);
+    }
+
+    .btn-green{
+      background: var(--verde);
+      color: var(--blanco);
+    }
+
+    .hero-photo{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .hero-photo img{
+      width:100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 3px solid rgba(255,255,255,.35);
+      background: #ddd;
+    }
+
+    .wrapper{
+      max-width: 1150px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+    }
+
+    .section{
+      margin-top: 22px;
+      background: var(--amarillo-claro);
+      border-radius: 22px;
+      box-shadow: var(--sombra);
+      padding: 26px;
+      border: 2px solid rgba(0,0,0,.05);
+    }
+
+    .section-title{
+      text-align:center;
+      color: var(--rojo-oscuro);
+      font-size: 2rem;
+      margin-bottom: 6px;
+      font-weight: 900;
+    }
+
+    .section-sub{
+      text-align:center;
+      color: var(--gris);
+      margin-bottom: 20px;
+    }
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .menu-card{
+      background: var(--blanco);
+      border: 2px solid #f0d48a;
+      border-radius: var(--radio);
+      padding: 18px;
+      box-shadow: 0 6px 14px rgba(0,0,0,.05);
+    }
+
+    .menu-card h3{
+      color: var(--rojo);
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #f2e2ac;
+      padding-bottom: 8px;
+    }
+
+    .item{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding: 10px 0;
+      border-bottom: 1px dashed #e5d7ac;
+      font-size: 1rem;
+    }
+
+    .item:last-child{
+      border-bottom:none;
+    }
+
+    .item span:first-child{
+      font-weight: 600;
+    }
+
+    .precio{
+      font-weight: 700;
+      color: var(--rojo-oscuro);
+      white-space: nowrap;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .gallery img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      border-radius:18px;
+      box-shadow: var(--sombra);
+      border: 3px solid #fff;
+    }
+
+    .info-card{
+      background: var(--blanco);
+      border-radius: 18px;
+      padding: 20px;
+      border: 2px solid #f0d48a;
+      height: 100%;
+      box-shadow: 0 6px 14px rgba(0,0,0,.05);
+    }
+
+    .info-card h3{
+      color: var(--rojo);
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .info-line{
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+    }
+
+    .info-line strong{
+      color: var(--rojo-oscuro);
+    }
+
+    .cta{
+      margin-top:16px;
+    }
+
+    .cta .btn{
+      width:100%;
+      text-align:center;
+    }
+
+    .footer{
+      text-align:center;
+      color:#6a4a18;
+      padding: 22px 16px 40px;
+      font-size: .95rem;
+      font-weight: bold;
+    }
+
+    .floating-wa{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: var(--verde);
+      color: white;
+      text-decoration:none;
+      font-weight:bold;
+      padding: 14px 18px;
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.22);
+      z-index: 60;
+    }
+
+    @media (max-width: 980px){
+      .hero-box,
+      .menu-grid,
+      .two-col{
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo img{
+        height: 220px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .brand h1{
+        font-size: 2.1rem;
+        letter-spacing: 1px;
+      }
+
+      .brand .taco{
+        font-size: 1.4rem;
+        margin: 0 4px;
+      }
+
+      .hero-text h2{
+        font-size: 1.7rem;
+      }
+
+      .section{
+        padding: 18px;
+      }
+
+      .section-title{
+        font-size: 1.6rem;
+      }
+
+      .gallery{
+        grid-template-columns:1fr;
+      }
+
+      .gallery img{
+        height: 250px;
+      }
+
+      .hero-photo{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <h1><span class="taco">🌮</span>TACOS LOS GÜEROS<span class="taco">🌮</span></h1>
+      <p>Taquería y parrillada · Ciudad de México</p>
+    </div>
+
+    <nav class="nav">
+      <a href="#menu">Menú</a>
+      <a href="#galeria">Fotos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-box">
+      <div class="hero-text">
+        <h2>Sabor de barrio, atención rápida y tacos bien servidos</h2>
+        <p>
+          En Tacos Los Güeros encuentras tacos, especiales, complementos y bebidas.
+          Revisa el menú completo y haz tu pedido por WhatsApp.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-light">Ver menú</a>
+          <a href="https://wa.me/5210000000000" class="btn btn-green" target="_blank">Pedir por WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img src="Screenshot 2026-03-24 233218.png" alt="Preparación de tacos al pastor">
+        <img src="Screenshot 2026-03-24 233254.png" alt="Tacos servidos">
+      </div>
+    </div>
+  </section>
+
+  <main class="wrapper">
+
+    <section class="section" id="menu">
+      <h2 class="section-title">Menú</h2>
+      <p class="section-sub">Precios visibles y listos para tus clientes</p>
+
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Tacos</h3>
+          <div class="item"><span>Pastor</span><span class="precio">$20</span></div>
+          <div class="item"><span>Suadero</span><span class="precio">$20</span></div>
+          <div class="item"><span>Longaniza</span><span class="precio">$20</span></div>
+          <div class="item"><span>Campechanos</span><span class="precio">$20</span></div>
+          <div class="item"><span>Cabeza</span><span class="precio">$20</span></div>
+          <div class="item"><span>Taco con queso</span><span class="precio">$40</span></div>
+          <div class="item"><span>Bistec</span><span class="precio">$35</span></div>
+          <div class="item"><span>Aguja</span><span class="precio">$35</span></div>
+          <div class="item"><span>Lengua</span><span class="precio">$35</span></div>
+          <div class="item"><span>Machito</span><span class="precio">$35</span></div>
+          <div class="item"><span>Chuleta</span><span class="precio">$30</span></div>
+          <div class="item"><span>Pechuga</span><span class="precio">$30</span></div>
+          <div class="item"><span>Nenepil</span><span class="precio">$30</span></div>
+        </div>
+
+        <div class="menu-card">
+          <h3>Especiales</h3>
+          <div class="item"><span>Rajas</span><span class="precio">$30</span></div>
+          <div class="item"><span>Hongos</span><span class="precio">$30</span></div>
+          <div class="item"><span>Nopales</span><span class="precio">$30</span></div>
+          <div class="item"><span>Vegetariano</span><span class="precio">$30</span></div>
+          <div class="item"><span>Con carne</span><span class="precio">$40</span></div>
+        </div>
+
+        <div class="menu-card">
+          <h3>Complementos y bebidas</h3>
+          <div class="item"><span>Tortas</span><span class="precio">$60</span></div>
+          <div class="item"><span>Gringas</span><span class="precio">$60</span></div>
+          <div class="item"><span>Volcanes</span><span class="precio">$40</span></div>
+          <div class="item"><span>Sincronizada</span><span class="precio">$30</span></div>
+          <div class="item"><span>Alambres</span><span class="precio">$200</span></div>
+          <div class="item"><span>Kilo de carne</span><span class="precio">$400</span></div>
+          <div class="item"><span>Refrescos</span><span class="precio">$25</span></div>
+          <div class="item"><span>Agua del día</span><span class="precio">$25</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="galeria">
+      <h2 class="section-title">Fotos reales</h2>
+      <p class="section-sub">Muestra el producto y la preparación para dar confianza</p>
+
+      <div class="two-col">
+        <div class="gallery">
+          <img src="Screenshot 2026-03-24 233218.png" alt="Trompo y preparación">
+          <img src="Screenshot 2026-03-24 233254.png" alt="Tacos preparados">
+        </div>
+
+        <div class="info-card" id="contacto">
+          <h3>Contacto</h3>
+          <p class="info-line"><strong>Negocio:</strong> Tacos Los Güeros</p>
+          <p class="info-line"><strong>Ubicación:</strong> Ciudad de México</p>
+          <p class="info-line"><strong>Teléfono:</strong> Pendiente</p>
+          <p class="info-line"><strong>WhatsApp:</strong> Pendiente</p>
+          <p class="info-line"><strong>Servicio a domicilio:</strong> Disponible</p>
+          <p class="info-line"><strong>Horario:</strong> Pendiente</p>
+
+          <div class="cta">
+            <a href="https://wa.me/5210000000000" class="btn btn-green" target="_blank">Hacer pedido por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    © Tacos Los Güeros · Página de negocio
+  </footer>
+
+  <a class="floating-wa" href="https://wa.me/5210000000000" target="_blank">WhatsApp</a>
+
+</body>
+</html>
