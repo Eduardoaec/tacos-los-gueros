@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tacos Los Güeros</title>
-  <meta name="description" content="Tacos Los Güeros - Taquería y parrillada en Ciudad de México. Menú, pedidos por WhatsApp y servicio a domicilio." />
+  <title>Tacos Don Bruno's</title>
+  <meta name="description" content="Tacos Don Bruno's - Taquería y parrillada. Menú, galería y pedidos por WhatsApp.">
 
   <style>
     :root{
-      --rojo:#d71920;
-      --rojo-oscuro:#8f1015;
-      --amarillo:#f4c95d;
-      --amarillo-claro:#fff4cf;
-      --naranja:#f08c1a;
-      --naranja-fuerte:#e56f0b;
-      --negro:#1f1f1f;
-      --gris:#5b5b5b;
+      --rojo:#c11f2d;
+      --rojo-oscuro:#8e1117;
+      --dorado:#f0c35a;
+      --dorado-suave:#ffe2a0;
+      --carbon:#121212;
+      --carbon-2:#1b1b1b;
+      --gris:#b8b8b8;
       --blanco:#ffffff;
       --verde:#25D366;
-      --sombra:0 10px 25px rgba(0,0,0,.12);
-      --radio:18px;
+      --sombra:0 12px 28px rgba(0,0,0,.28);
+      --radio:22px;
     }
 
     *{
@@ -34,59 +33,55 @@
 
     body{
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #f7d06c 0%, #f2bd4a 100%);
-      color: var(--negro);
+      color: var(--blanco);
+      background:
+        linear-gradient(rgba(10,10,10,.88), rgba(10,10,10,.92)),
+        url("Screenshot 2026-03-24 233218.png") center/cover fixed;
       line-height:1.5;
     }
 
     .topbar{
-      background: linear-gradient(90deg, var(--rojo), #ff2f3a, var(--rojo));
-      color: var(--blanco);
+      background: linear-gradient(90deg, rgba(193,31,45,.96), rgba(120,16,22,.96));
       text-align:center;
-      padding: 16px 14px 20px;
+      padding:24px 16px 18px;
+      border-bottom:3px solid var(--dorado);
       box-shadow: var(--sombra);
       position: sticky;
       top: 0;
-      z-index: 50;
-      border-bottom: 4px solid #ffcc4d;
+      z-index: 100;
+      backdrop-filter: blur(6px);
     }
 
-    .brand{
-      display:inline-block;
-      padding: 6px 18px 2px;
-      border-radius: 20px;
+    .logo{
+      width:110px;
+      height:110px;
+      object-fit:cover;
+      border-radius:50%;
+      background: var(--blanco);
+      padding:5px;
+      box-shadow: 0 8px 18px rgba(0,0,0,.35);
+      margin-bottom:10px;
     }
 
     .brand h1{
-      font-size: 3rem;
-      letter-spacing: 2px;
-      line-height: 1;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: #fff8d6;
+      font-size:3rem;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      color:var(--dorado-suave);
       text-shadow:
-        0 2px 0 #8f1015,
-        0 4px 0 #8f1015,
-        0 6px 12px rgba(0,0,0,.28),
-        0 0 12px rgba(255,230,120,.35);
-      margin-bottom: 8px;
+        0 2px 0 rgba(0,0,0,.35),
+        0 4px 16px rgba(0,0,0,.30);
     }
 
-    .brand .taco{
-      display:inline-block;
-      transform: translateY(-2px);
-      margin: 0 8px;
-      font-size: 2rem;
-    }
-
-    .topbar p{
-      font-size: 1rem;
-      opacity: .98;
-      font-weight: bold;
+    .brand p{
+      margin-top:6px;
+      color:#fff0c7;
+      font-weight:bold;
     }
 
     .nav{
-      margin-top: 14px;
+      margin-top:16px;
       display:flex;
       justify-content:center;
       gap:10px;
@@ -94,48 +89,54 @@
     }
 
     .nav a{
-      color: var(--blanco);
       text-decoration:none;
+      color:var(--blanco);
       padding:10px 16px;
-      border:1px solid rgba(255,255,255,.35);
       border-radius:999px;
-      font-size:.95rem;
       font-weight:bold;
-      background: rgba(255,255,255,.08);
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      transition:.2s ease;
+    }
+
+    .nav a:hover{
+      background:rgba(255,255,255,.18);
+      transform:translateY(-1px);
     }
 
     .hero{
-      max-width: 1150px;
-      margin: 22px auto 0;
-      padding: 0 16px;
+      max-width:1150px;
+      margin:28px auto 0;
+      padding:0 16px;
     }
 
     .hero-box{
-      background: linear-gradient(135deg, rgba(198,40,40,.95), rgba(239,143,26,.95));
-      color: var(--blanco);
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: var(--sombra);
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 20px;
+      grid-template-columns:1.08fr .92fr;
+      gap:22px;
       align-items:center;
-      border: 3px solid rgba(255,255,255,.18);
+      background: linear-gradient(135deg, rgba(20,20,20,.94), rgba(193,31,45,.90));
+      border:1px solid rgba(240,195,90,.28);
+      border-radius:28px;
+      padding:30px;
+      box-shadow: var(--sombra);
     }
 
     .hero-text h2{
-      font-size: 2.3rem;
-      margin-bottom: 10px;
-      line-height: 1.1;
+      font-size:2.6rem;
+      line-height:1.08;
+      margin-bottom:14px;
+      color:var(--dorado-suave);
     }
 
     .hero-text p{
-      font-size: 1.05rem;
-      margin-bottom: 16px;
-      max-width: 620px;
+      font-size:1.06rem;
+      color:#f4f4f4;
+      max-width:580px;
+      margin-bottom:20px;
     }
 
-    .hero-actions{
+    .hero-buttons{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
@@ -144,102 +145,94 @@
     .btn{
       display:inline-block;
       text-decoration:none;
-      border:none;
-      cursor:pointer;
       padding:14px 20px;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: .2s ease;
+      border-radius:14px;
+      font-size:1rem;
+      font-weight:bold;
+      transition:.2s ease;
     }
 
     .btn:hover{
-      transform: translateY(-1px);
+      transform:translateY(-1px);
     }
 
-    .btn-light{
-      background: var(--blanco);
-      color: var(--rojo);
+    .btn-gold{
+      background:var(--dorado);
+      color:#2b1800;
     }
 
     .btn-green{
-      background: var(--verde);
-      color: var(--blanco);
+      background:var(--verde);
+      color:var(--blanco);
     }
 
-    .hero-photo{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-
-    .hero-photo img{
+    .hero-image img{
       width:100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 16px;
-      border: 3px solid rgba(255,255,255,.35);
-      background: #ddd;
+      height:300px;
+      object-fit:cover;
+      border-radius:22px;
+      border:3px solid rgba(240,195,90,.30);
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
     }
 
     .wrapper{
-      max-width: 1150px;
-      margin: 24px auto 40px;
-      padding: 0 16px;
+      max-width:1150px;
+      margin:24px auto 42px;
+      padding:0 16px;
     }
 
     .section{
-      margin-top: 22px;
-      background: var(--amarillo-claro);
-      border-radius: 22px;
+      background: rgba(18,18,18,.88);
+      border:1px solid rgba(240,195,90,.20);
+      border-radius:24px;
+      padding:28px;
+      margin-top:24px;
       box-shadow: var(--sombra);
-      padding: 26px;
-      border: 2px solid rgba(0,0,0,.05);
     }
 
     .section-title{
       text-align:center;
-      color: var(--rojo-oscuro);
-      font-size: 2rem;
-      margin-bottom: 6px;
-      font-weight: 900;
+      color:var(--dorado-suave);
+      font-size:2.1rem;
+      font-weight:900;
+      margin-bottom:6px;
     }
 
     .section-sub{
       text-align:center;
-      color: var(--gris);
-      margin-bottom: 20px;
+      color:var(--gris);
+      margin-bottom:22px;
     }
 
     .menu-grid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns:repeat(3, 1fr);
       gap:18px;
     }
 
     .menu-card{
-      background: var(--blanco);
-      border: 2px solid #f0d48a;
-      border-radius: var(--radio);
-      padding: 18px;
-      box-shadow: 0 6px 14px rgba(0,0,0,.05);
+      background: var(--carbon-2);
+      border:1px solid rgba(240,195,90,.18);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 6px 14px rgba(0,0,0,.18);
     }
 
     .menu-card h3{
-      color: var(--rojo);
-      font-size: 1.35rem;
-      margin-bottom: 12px;
-      border-bottom: 2px solid #f2e2ac;
-      padding-bottom: 8px;
+      color:var(--dorado);
+      font-size:1.35rem;
+      margin-bottom:12px;
+      padding-bottom:8px;
+      border-bottom:1px solid rgba(240,195,90,.24);
     }
 
     .item{
       display:flex;
       justify-content:space-between;
       gap:12px;
-      padding: 10px 0;
-      border-bottom: 1px dashed #e5d7ac;
-      font-size: 1rem;
+      padding:9px 0;
+      border-bottom:1px dashed rgba(240,195,90,.12);
+      font-size:1rem;
     }
 
     .item:last-child{
@@ -247,18 +240,19 @@
     }
 
     .item span:first-child{
-      font-weight: 600;
+      font-weight:600;
+      color:#f6f6f6;
     }
 
     .precio{
-      font-weight: 700;
-      color: var(--rojo-oscuro);
-      white-space: nowrap;
+      font-weight:700;
+      color:var(--dorado-suave);
+      white-space:nowrap;
     }
 
     .two-col{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns:1.05fr .95fr;
       gap:18px;
       align-items:start;
     }
@@ -271,39 +265,39 @@
 
     .gallery img{
       width:100%;
-      height:320px;
+      height:340px;
       object-fit:cover;
       border-radius:18px;
+      border:2px solid rgba(240,195,90,.25);
       box-shadow: var(--sombra);
-      border: 3px solid #fff;
     }
 
     .info-card{
-      background: var(--blanco);
-      border-radius: 18px;
-      padding: 20px;
-      border: 2px solid #f0d48a;
-      height: 100%;
-      box-shadow: 0 6px 14px rgba(0,0,0,.05);
+      background: var(--carbon-2);
+      border-radius:18px;
+      padding:20px;
+      border:1px solid rgba(240,195,90,.20);
+      box-shadow:0 6px 14px rgba(0,0,0,.18);
     }
 
     .info-card h3{
-      color: var(--rojo);
-      font-size: 1.5rem;
-      margin-bottom: 12px;
+      color:var(--dorado);
+      font-size:1.5rem;
+      margin-bottom:14px;
     }
 
     .info-line{
-      font-size: 1.05rem;
-      margin-bottom: 12px;
+      margin-bottom:12px;
+      font-size:1.03rem;
+      color:#f0f0f0;
     }
 
     .info-line strong{
-      color: var(--rojo-oscuro);
+      color:var(--dorado-suave);
     }
 
     .cta{
-      margin-top:16px;
+      margin-top:18px;
     }
 
     .cta .btn{
@@ -313,59 +307,58 @@
 
     .footer{
       text-align:center;
-      color:#6a4a18;
-      padding: 22px 16px 40px;
-      font-size: .95rem;
-      font-weight: bold;
+      color:#d1b16e;
+      padding:20px 16px 34px;
+      font-size:.95rem;
+      font-weight:bold;
     }
 
     .floating-wa{
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      background: var(--verde);
-      color: white;
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      background:var(--verde);
+      color:var(--blanco);
       text-decoration:none;
       font-weight:bold;
-      padding: 14px 18px;
-      border-radius: 999px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.22);
-      z-index: 60;
+      padding:14px 18px;
+      border-radius:999px;
+      box-shadow:0 8px 20px rgba(0,0,0,.30);
+      z-index:120;
     }
 
-    @media (max-width: 980px){
+    @media (max-width: 950px){
       .hero-box,
       .menu-grid,
       .two-col{
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
       }
 
-      .hero-photo img{
-        height: 220px;
+      .hero-image img{
+        height:230px;
       }
     }
 
     @media (max-width: 640px){
       .brand h1{
-        font-size: 2.1rem;
-        letter-spacing: 1px;
+        font-size:2rem;
       }
 
-      .brand .taco{
-        font-size: 1.4rem;
-        margin: 0 4px;
+      .logo{
+        width:88px;
+        height:88px;
       }
 
       .hero-text h2{
-        font-size: 1.7rem;
+        font-size:1.85rem;
       }
 
       .section{
-        padding: 18px;
+        padding:18px;
       }
 
       .section-title{
-        font-size: 1.6rem;
+        font-size:1.6rem;
       }
 
       .gallery{
@@ -373,11 +366,7 @@
       }
 
       .gallery img{
-        height: 250px;
-      }
-
-      .hero-photo{
-        grid-template-columns:1fr;
+        height:240px;
       }
     }
   </style>
@@ -386,13 +375,14 @@
 
   <header class="topbar">
     <div class="brand">
-      <h1><span class="taco">🌮</span>TACOS LOS GÜEROS<span class="taco">🌮</span></h1>
+      <img src="logo.png" alt="Logo Tacos Don Bruno's" class="logo">
+      <h1>Tacos Don Bruno's</h1>
       <p>Taquería y parrillada · Ciudad de México</p>
     </div>
 
     <nav class="nav">
       <a href="#menu">Menú</a>
-      <a href="#galeria">Fotos</a>
+      <a href="#galeria">Galería</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
@@ -400,21 +390,20 @@
   <section class="hero">
     <div class="hero-box">
       <div class="hero-text">
-        <h2>Sabor de barrio, atención rápida y tacos bien servidos</h2>
+        <h2>Los mejores tacos del rumbo 🔥🌮</h2>
         <p>
-          En Tacos Los Güeros encuentras tacos, especiales, complementos y bebidas.
-          Revisa el menú completo y haz tu pedido por WhatsApp.
+          Disfruta tacos, especiales, complementos y bebidas con sabor auténtico.
+          Revisa el menú completo y haz tu pedido por WhatsApp de manera rápida.
         </p>
 
-        <div class="hero-actions">
-          <a href="#menu" class="btn btn-light">Ver menú</a>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-gold">Ver menú</a>
           <a href="https://wa.me/5210000000000" class="btn btn-green" target="_blank">Pedir por WhatsApp</a>
         </div>
       </div>
 
-      <div class="hero-photo">
+      <div class="hero-image">
         <img src="Screenshot 2026-03-24 233218.png" alt="Preparación de tacos al pastor">
-        <img src="Screenshot 2026-03-24 233254.png" alt="Tacos servidos">
       </div>
     </div>
   </section>
@@ -422,7 +411,7 @@
   <main class="wrapper">
 
     <section class="section" id="menu">
-      <h2 class="section-title">Menú</h2>
+      <h2 class="section-title">Menú completo</h2>
       <p class="section-sub">Precios visibles y listos para tus clientes</p>
 
       <div class="menu-grid">
@@ -467,18 +456,18 @@
     </section>
 
     <section class="section" id="galeria">
-      <h2 class="section-title">Fotos reales</h2>
-      <p class="section-sub">Muestra el producto y la preparación para dar confianza</p>
+      <h2 class="section-title">Galería</h2>
+      <p class="section-sub">Fotos reales del producto y la preparación</p>
 
       <div class="two-col">
         <div class="gallery">
-          <img src="Screenshot 2026-03-24 233218.png" alt="Trompo y preparación">
+          <img src="Screenshot 2026-03-24 233218.png" alt="Preparación del trompo">
           <img src="Screenshot 2026-03-24 233254.png" alt="Tacos preparados">
         </div>
 
         <div class="info-card" id="contacto">
           <h3>Contacto</h3>
-          <p class="info-line"><strong>Negocio:</strong> Tacos Los Güeros</p>
+          <p class="info-line"><strong>Negocio:</strong> Tacos Don Bruno's</p>
           <p class="info-line"><strong>Ubicación:</strong> Ciudad de México</p>
           <p class="info-line"><strong>Teléfono:</strong> Pendiente</p>
           <p class="info-line"><strong>WhatsApp:</strong> Pendiente</p>
@@ -495,7 +484,7 @@
   </main>
 
   <footer class="footer">
-    © Tacos Los Güeros · Página de negocio
+    © Tacos Don Bruno's · Página de negocio
   </footer>
 
   <a class="floating-wa" href="https://wa.me/5210000000000" target="_blank">WhatsApp</a>
