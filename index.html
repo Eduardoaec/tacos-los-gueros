@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tacos Don Bruno's</title>
-  <meta name="description" content="Tacos Don Bruno's - Taquería y parrillada. Menú, galería y pedidos por WhatsApp.">
+  <meta name="description" content="Tacos Don Bruno's - Taquería y parrillada. Menú interactivo, galería y pedidos por WhatsApp.">
 
   <style>
     :root{
@@ -18,7 +18,6 @@
       --blanco:#ffffff;
       --verde:#25D366;
       --sombra:0 12px 28px rgba(0,0,0,.28);
-      --radio:22px;
     }
 
     *{
@@ -47,8 +46,8 @@
       border-bottom:3px solid var(--dorado);
       box-shadow: var(--sombra);
       position: sticky;
-      top: 0;
-      z-index: 100;
+      top:0;
+      z-index:100;
       backdrop-filter: blur(6px);
     }
 
@@ -150,6 +149,8 @@
       font-size:1rem;
       font-weight:bold;
       transition:.2s ease;
+      border:none;
+      cursor:pointer;
     }
 
     .btn:hover{
@@ -163,6 +164,11 @@
 
     .btn-green{
       background:var(--verde);
+      color:var(--blanco);
+    }
+
+    .btn-red{
+      background:var(--rojo);
       color:var(--blanco);
     }
 
@@ -227,20 +233,23 @@
     }
 
     .item{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      padding:9px 0;
+      padding:12px 0;
       border-bottom:1px dashed rgba(240,195,90,.12);
-      font-size:1rem;
     }
 
     .item:last-child{
       border-bottom:none;
     }
 
-    .item span:first-child{
-      font-weight:600;
+    .item-top{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:8px;
+    }
+
+    .item-name{
+      font-weight:700;
       color:#f6f6f6;
     }
 
@@ -248,6 +257,90 @@
       font-weight:700;
       color:var(--dorado-suave);
       white-space:nowrap;
+    }
+
+    .controls{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .qty-box{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .qty-btn{
+      width:34px;
+      height:34px;
+      border:none;
+      border-radius:10px;
+      background:var(--rojo);
+      color:white;
+      font-size:1.2rem;
+      font-weight:bold;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+
+    .qty-btn:hover{
+      background:var(--rojo-oscuro);
+    }
+
+    .qty{
+      min-width:28px;
+      text-align:center;
+      font-weight:bold;
+      font-size:1rem;
+    }
+
+    .subtotal{
+      color:var(--gris);
+      font-size:.95rem;
+      font-weight:bold;
+    }
+
+    .order-box{
+      margin-top:24px;
+      background:var(--carbon-2);
+      border:1px solid rgba(240,195,90,.18);
+      border-radius:18px;
+      padding:20px;
+      box-shadow:0 6px 14px rgba(0,0,0,.18);
+    }
+
+    .order-box h3{
+      color:var(--dorado);
+      margin-bottom:14px;
+      font-size:1.4rem;
+    }
+
+    #resumenPedido{
+      margin-bottom:14px;
+      color:#f2f2f2;
+      min-height:40px;
+    }
+
+    .pedido-item{
+      margin-bottom:8px;
+      padding-bottom:8px;
+      border-bottom:1px dashed rgba(240,195,90,.12);
+    }
+
+    .total{
+      font-size:1.45rem;
+      font-weight:900;
+      color:var(--dorado-suave);
+      margin-bottom:16px;
+    }
+
+    .order-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
     .two-col{
@@ -294,15 +387,6 @@
 
     .info-line strong{
       color:var(--dorado-suave);
-    }
-
-    .cta{
-      margin-top:18px;
-    }
-
-    .cta .btn{
-      width:100%;
-      text-align:center;
     }
 
     .footer{
@@ -368,6 +452,14 @@
       .gallery img{
         height:240px;
       }
+
+      .order-actions{
+        flex-direction:column;
+      }
+
+      .order-actions .btn{
+        width:100%;
+      }
     }
   </style>
 </head>
@@ -382,6 +474,7 @@
 
     <nav class="nav">
       <a href="#menu">Menú</a>
+      <a href="#pedido">Tu pedido</a>
       <a href="#galeria">Galería</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -390,15 +483,15 @@
   <section class="hero">
     <div class="hero-box">
       <div class="hero-text">
-        <h2>Los mejores tacos del rumbo 🔥🌮</h2>
+        <h2>Arma tu pedido 🔥🌮</h2>
         <p>
-          Disfruta tacos, especiales, complementos y bebidas con sabor auténtico.
-          Revisa el menú completo y haz tu pedido por WhatsApp de manera rápida.
+          Elige tus tacos, especiales, complementos y bebidas favoritas.
+          La página suma automáticamente tu pedido y al final puedes enviarlo por WhatsApp.
         </p>
 
         <div class="hero-buttons">
           <a href="#menu" class="btn btn-gold">Ver menú</a>
-          <a href="https://wa.me/5210000000000" class="btn btn-green" target="_blank">Pedir por WhatsApp</a>
+          <a href="#pedido" class="btn btn-green">Ver total</a>
         </div>
       </div>
 
@@ -411,46 +504,163 @@
   <main class="wrapper">
 
     <section class="section" id="menu">
-      <h2 class="section-title">Menú completo</h2>
-      <p class="section-sub">Precios visibles y listos para tus clientes</p>
+      <h2 class="section-title">Menú interactivo</h2>
+      <p class="section-sub">Selecciona productos y calcula tu total automáticamente</p>
 
       <div class="menu-grid">
+
         <div class="menu-card">
           <h3>Tacos</h3>
-          <div class="item"><span>Pastor</span><span class="precio">$20</span></div>
-          <div class="item"><span>Suadero</span><span class="precio">$20</span></div>
-          <div class="item"><span>Longaniza</span><span class="precio">$20</span></div>
-          <div class="item"><span>Campechanos</span><span class="precio">$20</span></div>
-          <div class="item"><span>Cabeza</span><span class="precio">$20</span></div>
-          <div class="item"><span>Taco con queso</span><span class="precio">$40</span></div>
-          <div class="item"><span>Bistec</span><span class="precio">$35</span></div>
-          <div class="item"><span>Aguja</span><span class="precio">$35</span></div>
-          <div class="item"><span>Lengua</span><span class="precio">$35</span></div>
-          <div class="item"><span>Machito</span><span class="precio">$35</span></div>
-          <div class="item"><span>Chuleta</span><span class="precio">$30</span></div>
-          <div class="item"><span>Pechuga</span><span class="precio">$30</span></div>
-          <div class="item"><span>Nenepil</span><span class="precio">$30</span></div>
+
+          <div class="item" data-name="Pastor" data-price="20">
+            <div class="item-top"><span class="item-name">Pastor</span><span class="precio">$20</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Suadero" data-price="20">
+            <div class="item-top"><span class="item-name">Suadero</span><span class="precio">$20</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Longaniza" data-price="20">
+            <div class="item-top"><span class="item-name">Longaniza</span><span class="precio">$20</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Campechanos" data-price="20">
+            <div class="item-top"><span class="item-name">Campechanos</span><span class="precio">$20</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Cabeza" data-price="20">
+            <div class="item-top"><span class="item-name">Cabeza</span><span class="precio">$20</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Taco con queso" data-price="40">
+            <div class="item-top"><span class="item-name">Taco con queso</span><span class="precio">$40</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Bistec" data-price="35">
+            <div class="item-top"><span class="item-name">Bistec</span><span class="precio">$35</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Aguja" data-price="35">
+            <div class="item-top"><span class="item-name">Aguja</span><span class="precio">$35</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Lengua" data-price="35">
+            <div class="item-top"><span class="item-name">Lengua</span><span class="precio">$35</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Machito" data-price="35">
+            <div class="item-top"><span class="item-name">Machito</span><span class="precio">$35</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Chuleta" data-price="30">
+            <div class="item-top"><span class="item-name">Chuleta</span><span class="precio">$30</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Pechuga" data-price="30">
+            <div class="item-top"><span class="item-name">Pechuga</span><span class="precio">$30</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Nenepil" data-price="30">
+            <div class="item-top"><span class="item-name">Nenepil</span><span class="precio">$30</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
         </div>
 
         <div class="menu-card">
           <h3>Especiales</h3>
-          <div class="item"><span>Rajas</span><span class="precio">$30</span></div>
-          <div class="item"><span>Hongos</span><span class="precio">$30</span></div>
-          <div class="item"><span>Nopales</span><span class="precio">$30</span></div>
-          <div class="item"><span>Vegetariano</span><span class="precio">$30</span></div>
-          <div class="item"><span>Con carne</span><span class="precio">$40</span></div>
+
+          <div class="item" data-name="Rajas" data-price="30">
+            <div class="item-top"><span class="item-name">Rajas</span><span class="precio">$30</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Hongos" data-price="30">
+            <div class="item-top"><span class="item-name">Hongos</span><span class="precio">$30</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Nopales" data-price="30">
+            <div class="item-top"><span class="item-name">Nopales</span><span class="precio">$30</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Vegetariano" data-price="30">
+            <div class="item-top"><span class="item-name">Vegetariano</span><span class="precio">$30</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Especial con carne" data-price="40">
+            <div class="item-top"><span class="item-name">Con carne</span><span class="precio">$40</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
         </div>
 
         <div class="menu-card">
           <h3>Complementos y bebidas</h3>
-          <div class="item"><span>Tortas</span><span class="precio">$60</span></div>
-          <div class="item"><span>Gringas</span><span class="precio">$60</span></div>
-          <div class="item"><span>Volcanes</span><span class="precio">$40</span></div>
-          <div class="item"><span>Sincronizada</span><span class="precio">$30</span></div>
-          <div class="item"><span>Alambres</span><span class="precio">$200</span></div>
-          <div class="item"><span>Kilo de carne</span><span class="precio">$400</span></div>
-          <div class="item"><span>Refrescos</span><span class="precio">$25</span></div>
-          <div class="item"><span>Agua del día</span><span class="precio">$25</span></div>
+
+          <div class="item" data-name="Tortas" data-price="60">
+            <div class="item-top"><span class="item-name">Tortas</span><span class="precio">$60</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Gringas" data-price="60">
+            <div class="item-top"><span class="item-name">Gringas</span><span class="precio">$60</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Volcanes" data-price="40">
+            <div class="item-top"><span class="item-name">Volcanes</span><span class="precio">$40</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Sincronizada" data-price="30">
+            <div class="item-top"><span class="item-name">Sincronizada</span><span class="precio">$30</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Alambres" data-price="200">
+            <div class="item-top"><span class="item-name">Alambres</span><span class="precio">$200</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Kilo de carne" data-price="400">
+            <div class="item-top"><span class="item-name">Kilo de carne</span><span class="precio">$400</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Refrescos" data-price="25">
+            <div class="item-top"><span class="item-name">Refrescos</span><span class="precio">$25</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Agua del día" data-price="25">
+            <div class="item-top"><span class="item-name">Agua del día</span><span class="precio">$25</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="order-box" id="pedido">
+        <h3>Tu pedido</h3>
+        <div id="resumenPedido">Aún no has seleccionado productos.</div>
+        <div class="total">Total: <span id="totalPedido">$0</span></div>
+
+        <div class="order-actions">
+          <button class="btn btn-red" onclick="limpiarPedido()">Limpiar pedido</button>
+          <button class="btn btn-green" onclick="enviarWhatsApp()">Enviar pedido por WhatsApp</button>
         </div>
       </div>
     </section>
@@ -469,14 +679,10 @@
           <h3>Contacto</h3>
           <p class="info-line"><strong>Negocio:</strong> Tacos Don Bruno's</p>
           <p class="info-line"><strong>Ubicación:</strong> Ciudad de México</p>
-          <p class="info-line"><strong>Teléfono:</strong> Pendiente</p>
-          <p class="info-line"><strong>WhatsApp:</strong> Pendiente</p>
+          <p class="info-line"><strong>Teléfono:</strong> 55 1234 5678</p>
+          <p class="info-line"><strong>WhatsApp:</strong> 55 1234 5678</p>
           <p class="info-line"><strong>Servicio a domicilio:</strong> Disponible</p>
-          <p class="info-line"><strong>Horario:</strong> Pendiente</p>
-
-          <div class="cta">
-            <a href="https://wa.me/5210000000000" class="btn btn-green" target="_blank">Hacer pedido por WhatsApp</a>
-          </div>
+          <p class="info-line"><strong>Horario:</strong> Lunes a Domingo · 6:00 PM a 1:00 AM</p>
         </div>
       </div>
     </section>
@@ -484,10 +690,96 @@
   </main>
 
   <footer class="footer">
-    © Tacos Don Bruno's · Página de negocio
+    © 2026 Tacos Don Bruno's · Página oficial del negocio
   </footer>
 
-  <a class="floating-wa" href="https://wa.me/5210000000000" target="_blank">WhatsApp</a>
+  <a class="floating-wa" href="javascript:void(0)" onclick="enviarWhatsApp()">WhatsApp</a>
+
+  <script>
+    function changeQty(button, amount) {
+      const item = button.closest('.item');
+      const qtyElement = item.querySelector('.qty');
+      const subtotalElement = item.querySelector('.subtotal');
+      const price = parseInt(item.dataset.price, 10);
+
+      let qty = parseInt(qtyElement.textContent, 10);
+      qty += amount;
+
+      if (qty < 0) qty = 0;
+
+      qtyElement.textContent = qty;
+      subtotalElement.textContent = '$' + (qty * price);
+
+      actualizarPedido();
+    }
+
+    function actualizarPedido() {
+      const items = document.querySelectorAll('.item');
+      const resumen = document.getElementById('resumenPedido');
+      const totalElement = document.getElementById('totalPedido');
+
+      let total = 0;
+      let pedidoHTML = '';
+      let hayProductos = false;
+
+      items.forEach(item => {
+        const name = item.dataset.name;
+        const price = parseInt(item.dataset.price, 10);
+        const qty = parseInt(item.querySelector('.qty').textContent, 10);
+
+        if (qty > 0) {
+          const subtotal = qty * price;
+          total += subtotal;
+          hayProductos = true;
+          pedidoHTML += `<div class="pedido-item">${qty} x ${name} = $${subtotal}</div>`;
+        }
+      });
+
+      resumen.innerHTML = hayProductos ? pedidoHTML : 'Aún no has seleccionado productos.';
+      totalElement.textContent = '$' + total;
+    }
+
+    function limpiarPedido() {
+      document.querySelectorAll('.item').forEach(item => {
+        item.querySelector('.qty').textContent = '0';
+        item.querySelector('.subtotal').textContent = '$0';
+      });
+      actualizarPedido();
+    }
+
+    function enviarWhatsApp() {
+      const items = document.querySelectorAll('.item');
+      let mensaje = 'Hola, quiero hacer este pedido:%0A';
+      let total = 0;
+      let hayProductos = false;
+
+      items.forEach(item => {
+        const name = item.dataset.name;
+        const price = parseInt(item.dataset.price, 10);
+        const qty = parseInt(item.querySelector('.qty').textContent, 10);
+
+        if (qty > 0) {
+          const subtotal = qty * price;
+          total += subtotal;
+          hayProductos = true;
+          mensaje += `- ${qty} x ${name} = $${subtotal}%0A`;
+        }
+      });
+
+      if (!hayProductos) {
+        alert('Primero selecciona al menos un producto.');
+        return;
+      }
+
+      mensaje += `%0ATotal: $${total}`;
+
+      const numero = '5215512345678';
+      const url = `https://wa.me/${numero}?text=${mensaje}`;
+      window.open(url, '_blank');
+    }
+
+    actualizarPedido();
+  </script>
 
 </body>
 </html>
