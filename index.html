@@ -45,9 +45,6 @@
       padding:24px 16px 18px;
       border-bottom:3px solid var(--dorado);
       box-shadow: var(--sombra);
-      position: sticky;
-      top:0;
-      z-index:100;
       backdrop-filter: blur(6px);
     }
 
@@ -749,7 +746,7 @@
 
     function enviarWhatsApp() {
       const items = document.querySelectorAll('.item');
-      let mensaje = 'Hola, quiero hacer este pedido:%0A';
+      let lineas = ['Hola, quiero hacer este pedido:'];
       let total = 0;
       let hayProductos = false;
 
@@ -762,7 +759,7 @@
           const subtotal = qty * price;
           total += subtotal;
           hayProductos = true;
-          mensaje += `- ${qty} x ${name} = $${subtotal}%0A`;
+          lineas.push(`- ${qty} x ${name} = $${subtotal}`);
         }
       });
 
@@ -771,15 +768,14 @@
         return;
       }
 
-      mensaje += `%0ATotal: $${total}`;
+      lineas.push('');
+      lineas.push(`Total: $${total}`);
 
       const numero = '5215512345678';
+      const mensaje = encodeURIComponent(lineas.join('\n'));
       const url = `https://wa.me/${numero}?text=${mensaje}`;
       window.open(url, '_blank');
     }
-
-    actualizarPedido();
   </script>
-
 </body>
 </html>
