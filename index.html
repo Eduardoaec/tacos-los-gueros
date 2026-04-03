@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tacos Don Bruno's</title>
-  <meta name="description" content="Tacos Don Bruno's - Taquería y parrillada. Menú interactivo, galería y pedidos por WhatsApp.">
+  <title>Tacos Bruno's</title>
+  <meta name="description" content="Tacos Bruno's - Taquería y parrillada. Menú interactivo, galería y pedidos por WhatsApp.">
 
   <style>
     :root{
@@ -442,15 +442,20 @@
         font-size:1.6rem;
       }
 
-      .gallery{
-        grid-template-columns:1fr;
-      }
+      .galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
 
-      .gallery img{
-        height:240px;
-      }
-
-      .order-actions{
+.galeria-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block; /* IMPORTANTE */
+}
+.order-actions{
         flex-direction:column;
       }
 
@@ -458,14 +463,33 @@
         width:100%;
       }
     }
-  </style>
+  
+.order-actions .btn{
+  width:100%;
+}
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.galeria-grid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+</style>
+   </style>
 </head>
 <body>
 
   <header class="topbar">
     <div class="brand">
-      <img src="logo.png" alt="Logo Tacos Don Bruno's" class="logo">
-      <h1>Tacos Don Bruno's</h1>
+      <img src="logo.png" alt="Logo Tacos Bruno's" class="logo">
+      <h1>Tacos Bruno's</h1>
       <p>Taquería y parrillada · Ciudad de México</p>
     </div>
 
@@ -509,28 +533,28 @@
         <div class="menu-card">
           <h3>Tacos</h3>
 
-          <div class="item" data-name="Pastor" data-price="20">
-            <div class="item-top"><span class="item-name">Pastor</span><span class="precio">$20</span></div>
+          <div class="item" data-name="Pastor" data-price="22">
+            <div class="item-top"><span class="item-name">Pastor</span><span class="precio">$22</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Suadero" data-price="20">
-            <div class="item-top"><span class="item-name">Suadero</span><span class="precio">$20</span></div>
+          <div class="item" data-name="Suadero" data-price="22">
+            <div class="item-top"><span class="item-name">Suadero</span><span class="precio">$22</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Longaniza" data-price="20">
-            <div class="item-top"><span class="item-name">Longaniza</span><span class="precio">$20</span></div>
+          <div class="item" data-name="Longaniza" data-price="22">
+            <div class="item-top"><span class="item-name">Longaniza</span><span class="precio">$22</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Campechanos" data-price="20">
-            <div class="item-top"><span class="item-name">Campechanos</span><span class="precio">$20</span></div>
+          <div class="item" data-name="Campechanos" data-price="22">
+            <div class="item-top"><span class="item-name">Campechanos</span><span class="precio">$22</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Cabeza" data-price="20">
-            <div class="item-top"><span class="item-name">Cabeza</span><span class="precio">$20</span></div>
+          <div class="item" data-name="Cabeza" data-price="22">
+            <div class="item-top"><span class="item-name">Cabeza</span><span class="precio">$22</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
@@ -549,28 +573,28 @@
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Lengua" data-price="35">
-            <div class="item-top"><span class="item-name">Lengua</span><span class="precio">$35</span></div>
+          <div class="item" data-name="Lengua" data-price="40">
+            <div class="item-top"><span class="item-name">Lengua</span><span class="precio">$40</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Machito" data-price="35">
-            <div class="item-top"><span class="item-name">Machito</span><span class="precio">$35</span></div>
+          <div class="item" data-name="Machito" data-price="40">
+            <div class="item-top"><span class="item-name">Machito</span><span class="precio">$40</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Chuleta" data-price="30">
-            <div class="item-top"><span class="item-name">Chuleta</span><span class="precio">$30</span></div>
+          <div class="item" data-name="Chuleta" data-price="35">
+            <div class="item-top"><span class="item-name">Chuleta</span><span class="precio">$35</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Pechuga" data-price="30">
-            <div class="item-top"><span class="item-name">Pechuga</span><span class="precio">$30</span></div>
+          <div class="item" data-name="Pechuga" data-price="35">
+            <div class="item-top"><span class="item-name">Pechuga</span><span class="precio">$35</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Nenepil" data-price="30">
-            <div class="item-top"><span class="item-name">Nenepil</span><span class="precio">$30</span></div>
+          <div class="item" data-name="Nenepil" data-price="35">
+            <div class="item-top"><span class="item-name">Nenepil</span><span class="precio">$35</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
         </div>
@@ -578,23 +602,23 @@
         <div class="menu-card">
           <h3>Especiales</h3>
 
-          <div class="item" data-name="Rajas" data-price="30">
-            <div class="item-top"><span class="item-name">Rajas</span><span class="precio">$30</span></div>
+          <div class="item" data-name="Rajas" data-price="35">
+            <div class="item-top"><span class="item-name">Rajas</span><span class="precio">$35</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Hongos" data-price="30">
-            <div class="item-top"><span class="item-name">Hongos</span><span class="precio">$30</span></div>
+          <div class="item" data-name="Hongos" data-price="35">
+            <div class="item-top"><span class="item-name">Hongos</span><span class="precio">$35</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Nopales" data-price="30">
-            <div class="item-top"><span class="item-name">Nopales</span><span class="precio">$30</span></div>
+          <div class="item" data-name="Nopales" data-price="35">
+            <div class="item-top"><span class="item-name">Nopales</span><span class="precio">$35</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Vegetariano" data-price="30">
-            <div class="item-top"><span class="item-name">Vegetariano</span><span class="precio">$30</span></div>
+          <div class="item" data-name="Vegetariano" data-price="35">
+            <div class="item-top"><span class="item-name">Vegetariano</span><span class="precio">$35</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
@@ -607,13 +631,13 @@
         <div class="menu-card">
           <h3>Complementos y bebidas</h3>
 
-          <div class="item" data-name="Tortas" data-price="60">
-            <div class="item-top"><span class="item-name">Tortas</span><span class="precio">$60</span></div>
+          <div class="item" data-name="Tortas" data-price="65">
+            <div class="item-top"><span class="item-name">Tortas</span><span class="precio">$65</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Gringas" data-price="60">
-            <div class="item-top"><span class="item-name">Gringas</span><span class="precio">$60</span></div>
+          <div class="item" data-name="Gringas" data-price="65">
+            <div class="item-top"><span class="item-name">Gringas</span><span class="precio">$65</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
@@ -622,8 +646,8 @@
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Sincronizada" data-price="30">
-            <div class="item-top"><span class="item-name">Sincronizada</span><span class="precio">$30</span></div>
+          <div class="item" data-name="Sincronizada" data-price="35">
+            <div class="item-top"><span class="item-name">Sincronizada</span><span class="precio">$35</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
@@ -632,18 +656,24 @@
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Kilo de carne" data-price="400">
-            <div class="item-top"><span class="item-name">Kilo de carne</span><span class="precio">$400</span></div>
+          <div class="item" data-name="Kilo de Alpastor" data-price="400">
+            <div class="item-top"><span class="item-name">Kilo de Alpastor</span><span class="precio">$400</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Refrescos" data-price="25">
-            <div class="item-top"><span class="item-name">Refrescos</span><span class="precio">$25</span></div>
+<div class="item" data-name="Kilo de Suadero" data-price="480">
+            <div class="item-top"><span class="item-name">Kilo de Suadero</span><span class="precio">$480</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-          <div class="item" data-name="Agua del día" data-price="25">
-            <div class="item-top"><span class="item-name">Agua del día</span><span class="precio">$25</span></div>
+
+          <div class="item" data-name="Refrescos" data-price="30">
+            <div class="item-top"><span class="item-name">Refrescos</span><span class="precio">$30</span></div>
+            <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
+          </div>
+
+          <div class="item" data-name="Agua del día Litro" data-price="50">
+            <div class="item-top"><span class="item-name">Agua del día</span><span class="precio">$50</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
         </div>
@@ -667,19 +697,27 @@
       <p class="section-sub">Fotos reales del producto y la preparación</p>
 
       <div class="two-col">
-        <div class="gallery">
-          <img src="Screenshot 2026-03-24 233218.png" alt="Preparación del trompo">
-          <img src="Screenshot 2026-03-24 233254.png" alt="Tacos preparados">
-        </div>
+      <div class="gallery-grid">
 
+  <div class="galeria-grid">
+
+    <img src="taco10.jpeg">
+    <img src="taco11.jpeg">
+    <img src="taco12.jpeg">
+    <img src="taco13.jpeg">
+    <img src="taco14.jpeg">
+
+  </div>
+
+</div>
         <div class="info-card" id="contacto">
           <h3>Contacto</h3>
-          <p class="info-line"><strong>Negocio:</strong> Tacos Don Bruno's</p>
+          <p class="info-line"><strong>Negocio:</strong> Tacos Bruno's</p>
           <p class="info-line"><strong>Ubicación:</strong> Ciudad de México</p>
           <p class="info-line"><strong>Teléfono:</strong> 55 1234 5678</p>
           <p class="info-line"><strong>WhatsApp:</strong> 55 1234 5678</p>
-          <p class="info-line"><strong>Servicio a domicilio:</strong> Disponible</p>
-          <p class="info-line"><strong>Horario:</strong> Lunes a Domingo · 6:00 PM a 1:00 AM</p>
+          <p class="info-line"><strong>Servicio a domicilio:</strong> Proximamente Disponible</p>
+          <p class="info-line"><strong>Horario:</strong> Lunes a Jueves - 7:00 PM a 12:30 AM y Viernes a Sabados - 7:00 PM a 1:30 AM</p>
         </div>
       </div>
     </section>
@@ -687,7 +725,7 @@
   </main>
 
   <footer class="footer">
-    © 2026 Tacos Don Bruno's · Página oficial del negocio
+    © 2026 Tacos Bruno's · Página oficial del negocio
   </footer>
 
   <a class="floating-wa" href="javascript:void(0)" onclick="enviarWhatsApp()">WhatsApp</a>
@@ -771,7 +809,7 @@
       lineas.push('');
       lineas.push(`Total: $${total}`);
 
-      const numero = '5215512345678';
+      const numero = '353858835300';
       const mensaje = encodeURIComponent(lineas.join('\n'));
       const url = `https://wa.me/${numero}?text=${mensaje}`;
       window.open(url, '_blank');
