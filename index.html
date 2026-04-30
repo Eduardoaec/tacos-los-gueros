@@ -281,6 +281,8 @@
       font-weight:bold;
       cursor:pointer;
       transition:.2s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .qty-btn:hover{
@@ -453,7 +455,7 @@
   height: 180px;
   object-fit: cover;
   border-radius: 12px;
-  display: block; /* IMPORTANTE */
+  display: block;
 }
 .order-actions{
         flex-direction:column;
