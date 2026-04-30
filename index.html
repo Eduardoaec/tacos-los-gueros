@@ -8,15 +8,15 @@
 
   <style>
     :root{
-      --rojo:#c11f2d;
-      --rojo-oscuro:#8e1117;
-      --dorado:#f0c35a;
-      --dorado-suave:#ffe2a0;
-      --carbon:#121212;
-      --carbon-2:#1b1b1b;
-      --gris:#b8b8b8;
-      --blanco:#ffffff;
-      --verde:#25D366;
+      --rojo:#d94f8a;
+      --rojo-oscuro:#a82d62;
+      --dorado:#ffc1dd;
+      --dorado-suave:#ffe3f0;
+      --carbon:#2a1020;
+      --carbon-2:#3a1630;
+      --gris:#f3cddd;
+      --blanco:#fff8fc;
+      --verde:#ff6fae;
       --sombra:0 12px 28px rgba(0,0,0,.28);
     }
 
@@ -34,13 +34,173 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--blanco);
       background:
-        linear-gradient(rgba(10,10,10,.88), rgba(10,10,10,.92)),
+        linear-gradient(rgba(58,16,48,.82), rgba(90,24,70,.88)),
         url("Screenshot 2026-03-24 233218.png") center/cover fixed;
       line-height:1.5;
     }
 
+    .madres-banner{
+      position:relative;
+      overflow:hidden;
+      text-align:center;
+      padding:32px 20px;
+      background:linear-gradient(90deg, #5d1638, #91245a, #cf4f93);
+      border-bottom:3px solid rgba(255,255,255,.22);
+      box-shadow:0 12px 28px rgba(0,0,0,.30);
+    }
+
+    .madres-banner p{
+      position:relative;
+      z-index:3;
+      margin:0;
+      font-size:1.8rem;
+      font-weight:900;
+      color:#ffb0d4;
+      letter-spacing:.5px;
+      line-height:1.3;
+      text-shadow:
+        0 0 8px rgba(255,176,212,.65),
+        0 0 16px rgba(255,176,212,.45),
+        0 0 28px rgba(255,255,255,.25);
+      animation:brilloTexto 1.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes brilloTexto{
+      from{
+        text-shadow:
+          0 0 6px rgba(255,176,212,.45),
+          0 0 12px rgba(255,176,212,.25),
+          0 0 18px rgba(255,255,255,.12);
+      }
+      to{
+        text-shadow:
+          0 0 10px rgba(255,176,212,.75),
+          0 0 18px rgba(255,176,212,.45),
+          0 0 28px rgba(255,255,255,.22);
+      }
+    }
+
+    .flowers{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:2;
+    }
+
+    .flowers span{
+      position:absolute;
+      font-size:1.6rem;
+      opacity:.9;
+      animation:flotarFlor 6s linear infinite;
+    }
+
+    .flowers span:nth-child(1){ left:8%; top:70%; animation-delay:0s; }
+    .flowers span:nth-child(2){ left:24%; top:72%; animation-delay:1s; }
+    .flowers span:nth-child(3){ left:50%; top:68%; animation-delay:2s; }
+    .flowers span:nth-child(4){ left:76%; top:72%; animation-delay:3s; }
+    .flowers span:nth-child(5){ left:91%; top:69%; animation-delay:4s; }
+
+    @keyframes flotarFlor{
+      0%{
+        transform:translateY(18px) scale(.8) rotate(0deg);
+        opacity:0;
+      }
+      20%{
+        opacity:1;
+      }
+      50%{
+        transform:translateY(-8px) scale(1) rotate(8deg);
+      }
+      100%{
+        transform:translateY(-28px) scale(1.08) rotate(-8deg);
+        opacity:0;
+      }
+    }
+
+    .fireworks{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .firework{
+      position:absolute;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+    }
+
+    .firework::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      animation:cohete 2.5s infinite ease-out;
+    }
+
+    .f1{ left:15%; top:25%; }
+    .f2{ left:50%; top:18%; }
+    .f3{ left:82%; top:28%; }
+
+    .f1::before{
+      box-shadow:
+        0 -30px 0 #ff8fc0,
+        22px -22px 0 #ffd9eb,
+        30px 0 0 #ff66ad,
+        22px 22px 0 #ffc8e0,
+        0 30px 0 #ff8fc0,
+        -22px 22px 0 #ffd9eb,
+        -30px 0 0 #ff66ad,
+        -22px -22px 0 #ffc8e0;
+    }
+
+    .f2::before{
+      box-shadow:
+        0 -34px 0 #ffe3f0,
+        24px -24px 0 #ff9fcb,
+        34px 0 0 #fff7fb,
+        24px 24px 0 #ffbddb,
+        0 34px 0 #ffe3f0,
+        -24px 24px 0 #ff9fcb,
+        -34px 0 0 #fff7fb,
+        -24px -24px 0 #ffbddb;
+      animation-delay:.8s;
+    }
+
+    .f3::before{
+      box-shadow:
+        0 -28px 0 #ffb9d8,
+        20px -20px 0 #ffffff,
+        28px 0 0 #ff6dad,
+        20px 20px 0 #ffdcec,
+        0 28px 0 #ffb9d8,
+        -20px 20px 0 #ffffff,
+        -28px 0 0 #ff6dad,
+        -20px -20px 0 #ffdcec;
+      animation-delay:1.4s;
+    }
+
+    @keyframes cohete{
+      0%{
+        transform:scale(.2);
+        opacity:0;
+      }
+      20%{
+        opacity:1;
+      }
+      70%{
+        transform:scale(1);
+        opacity:1;
+      }
+      100%{
+        transform:scale(1.35);
+        opacity:0;
+      }
+    }
+
     .topbar{
-      background: linear-gradient(90deg, rgba(193,31,45,.96), rgba(120,16,22,.96));
+      background: linear-gradient(90deg, rgba(217,79,138,.96), rgba(130,28,82,.96));
       text-align:center;
       padding:24px 16px 18px;
       border-bottom:3px solid var(--dorado);
@@ -72,7 +232,7 @@
 
     .brand p{
       margin-top:6px;
-      color:#fff0c7;
+      color:#fff0f7;
       font-weight:bold;
     }
 
@@ -111,8 +271,8 @@
       grid-template-columns:1.08fr .92fr;
       gap:22px;
       align-items:center;
-      background: linear-gradient(135deg, rgba(20,20,20,.94), rgba(193,31,45,.90));
-      border:1px solid rgba(240,195,90,.28);
+      background: linear-gradient(135deg, rgba(42,16,32,.94), rgba(217,79,138,.86));
+      border:1px solid rgba(255,227,240,.25);
       border-radius:28px;
       padding:30px;
       box-shadow: var(--sombra);
@@ -127,7 +287,7 @@
 
     .hero-text p{
       font-size:1.06rem;
-      color:#f4f4f4;
+      color:#fff6fb;
       max-width:580px;
       margin-bottom:20px;
     }
@@ -156,7 +316,7 @@
 
     .btn-gold{
       background:var(--dorado);
-      color:#2b1800;
+      color:#5d1638;
     }
 
     .btn-green{
@@ -174,7 +334,7 @@
       height:300px;
       object-fit:cover;
       border-radius:22px;
-      border:3px solid rgba(240,195,90,.30);
+      border:3px solid rgba(255,227,240,.28);
       box-shadow:0 10px 24px rgba(0,0,0,.25);
     }
 
@@ -185,8 +345,8 @@
     }
 
     .section{
-      background: rgba(18,18,18,.88);
-      border:1px solid rgba(240,195,90,.20);
+      background: rgba(58,22,48,.88);
+      border:1px solid rgba(255,227,240,.18);
       border-radius:24px;
       padding:28px;
       margin-top:24px;
@@ -215,7 +375,7 @@
 
     .menu-card{
       background: var(--carbon-2);
-      border:1px solid rgba(240,195,90,.18);
+      border:1px solid rgba(255,227,240,.18);
       border-radius:18px;
       padding:18px;
       box-shadow:0 6px 14px rgba(0,0,0,.18);
@@ -226,12 +386,12 @@
       font-size:1.35rem;
       margin-bottom:12px;
       padding-bottom:8px;
-      border-bottom:1px solid rgba(240,195,90,.24);
+      border-bottom:1px solid rgba(255,227,240,.24);
     }
 
     .item{
       padding:12px 0;
-      border-bottom:1px dashed rgba(240,195,90,.12);
+      border-bottom:1px dashed rgba(255,227,240,.12);
     }
 
     .item:last-child{
@@ -247,7 +407,7 @@
 
     .item-name{
       font-weight:700;
-      color:#f6f6f6;
+      color:#fff8fc;
     }
 
     .precio{
@@ -305,7 +465,7 @@
     .order-box{
       margin-top:24px;
       background:var(--carbon-2);
-      border:1px solid rgba(240,195,90,.18);
+      border:1px solid rgba(255,227,240,.18);
       border-radius:18px;
       padding:20px;
       box-shadow:0 6px 14px rgba(0,0,0,.18);
@@ -319,14 +479,14 @@
 
     #resumenPedido{
       margin-bottom:14px;
-      color:#f2f2f2;
+      color:#fff7fb;
       min-height:40px;
     }
 
     .pedido-item{
       margin-bottom:8px;
       padding-bottom:8px;
-      border-bottom:1px dashed rgba(240,195,90,.12);
+      border-bottom:1px dashed rgba(255,227,240,.12);
     }
 
     .total{
@@ -360,7 +520,7 @@
       height:340px;
       object-fit:cover;
       border-radius:18px;
-      border:2px solid rgba(240,195,90,.25);
+      border:2px solid rgba(255,227,240,.25);
       box-shadow: var(--sombra);
     }
 
@@ -368,7 +528,7 @@
       background: var(--carbon-2);
       border-radius:18px;
       padding:20px;
-      border:1px solid rgba(240,195,90,.20);
+      border:1px solid rgba(255,227,240,.20);
       box-shadow:0 6px 14px rgba(0,0,0,.18);
     }
 
@@ -381,7 +541,7 @@
     .info-line{
       margin-bottom:12px;
       font-size:1.03rem;
-      color:#f0f0f0;
+      color:#fff7fb;
     }
 
     .info-line strong{
@@ -390,7 +550,7 @@
 
     .footer{
       text-align:center;
-      color:#d1b16e;
+      color:#ffd7e9;
       padding:20px 16px 34px;
       font-size:.95rem;
       font-weight:bold;
@@ -444,20 +604,34 @@
         font-size:1.6rem;
       }
 
-      .galeria-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
+      .madres-banner{
+        padding:24px 14px;
+      }
 
-.galeria-grid img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
-}
-.order-actions{
+      .madres-banner p{
+        font-size:1.3rem;
+        line-height:1.35;
+      }
+
+      .flowers span{
+        font-size:1.1rem;
+      }
+
+      .galeria-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .galeria-grid img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+        display: block;
+      }
+
+      .order-actions{
         flex-direction:column;
       }
 
@@ -465,28 +639,45 @@
         width:100%;
       }
     }
-  
-.order-actions .btn{
-  width:100%;
-}
 
-.galeria-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
+    .order-actions .btn{
+      width:100%;
+    }
 
-.galeria-grid img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 12px;
-}
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
 
-</style>
-   </style>
+    .galeria-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+  </style>
 </head>
 <body>
+
+  <div class="madres-banner">
+    <div class="fireworks">
+      <span class="firework f1"></span>
+      <span class="firework f2"></span>
+      <span class="firework f3"></span>
+    </div>
+
+    <div class="flowers">
+      <span>🌸</span>
+      <span>🌷</span>
+      <span>💐</span>
+      <span>🌸</span>
+      <span>🌷</span>
+    </div>
+
+    <p>En Tacos Bruno's celebramos a mamá con mucho cariño. ¡Feliz Día de las Madres! 💖</p>
+  </div>
 
   <header class="topbar">
     <div class="brand">
@@ -663,11 +854,10 @@
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
 
-<div class="item" data-name="Kilo de Suadero" data-price="480">
+          <div class="item" data-name="Kilo de Suadero" data-price="480">
             <div class="item-top"><span class="item-name">Kilo de Suadero</span><span class="precio">$480</span></div>
             <div class="controls"><div class="qty-box"><button class="qty-btn" onclick="changeQty(this,-1)">-</button><span class="qty">0</span><button class="qty-btn" onclick="changeQty(this,1)">+</button></div><span class="subtotal">$0</span></div>
           </div>
-
 
           <div class="item" data-name="Refrescos" data-price="30">
             <div class="item-top"><span class="item-name">Refrescos</span><span class="precio">$30</span></div>
@@ -699,19 +889,16 @@
       <p class="section-sub">Fotos reales del producto y la preparación</p>
 
       <div class="two-col">
-      <div class="gallery-grid">
+        <div class="gallery-grid">
+          <div class="galeria-grid">
+            <img src="taco10.jpeg">
+            <img src="taco11.jpeg">
+            <img src="taco12.jpeg">
+            <img src="taco13.jpeg">
+            <img src="taco14.jpeg">
+          </div>
+        </div>
 
-  <div class="galeria-grid">
-
-    <img src="taco10.jpeg">
-    <img src="taco11.jpeg">
-    <img src="taco12.jpeg">
-    <img src="taco13.jpeg">
-    <img src="taco14.jpeg">
-
-  </div>
-
-</div>
         <div class="info-card" id="contacto">
           <h3>Contacto</h3>
           <p class="info-line"><strong>Clave para transferencia:</strong> 012180015181404716</p>
@@ -721,7 +908,6 @@
           <p class="info-line"><strong>WhatsApp:</strong> 55 1234 5678</p>
           <p class="info-line"><strong>Servicio a domicilio:</strong> Proximamente Disponible</p>
           <p class="info-line"><strong>Horario:</strong> Lunes a Jueves - 7:00 PM a 12:30 AM y Viernes a Sabados - 7:00 PM a 1:30 AM</p>
-          
         </div>
       </div>
     </section>
